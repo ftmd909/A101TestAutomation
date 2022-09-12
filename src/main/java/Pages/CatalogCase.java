@@ -1,5 +1,6 @@
 package Pages;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,12 +12,12 @@ import javax.swing.*;
 public class CatalogCase extends BasePage {
     String searchtxt="kadın";
     String ColorGetTxt="SİYAH";
-    String EMailTxt="ftmxmee@gmail.com";
+    String EMailTxt="@gmail.com";
     String AdressTitleTxt="Ev";
     String NameTxt="Fatma";
     String SurNameTxt="DEMİR";
     String PhoneNumberTxt="1111111111";
-    String AdressTxt="Bu Bir Test Metinidir Lütfen Dikaate Almayınız. test:30 sk. no:25";
+    String AdressTxt="Bu Bir Test Metinidir Lütfen Dikate Almayınız. test:30 sk. no:25";
     String PostCodeTxt="06000";
     By CoociesAccept= new By.ById("CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll");
     By ToolTipMessage=new By.ByXPath("//a[@class='close js-tooltip-close']");
@@ -55,7 +56,7 @@ public class CatalogCase extends BasePage {
     By SelectDistrict=new By.ByXPath("//select[@name='district']//option[@value='5147']");
     By AdressLabel=new By.ByXPath("//textarea[@name='line']");
     By PostCodeLabel=new By.ByXPath("//input[@name='postcode']");
-    By SaveButton=new By.ByXPath("//button[normalize-space()='KAYDET']");
+    By SaveButton=new By.ByXPath("//button[@class='button green js-set-country js-prevent-emoji']");
     By SelectCargo=new By.ByXPath("//span[normalize-space()='Sendeo']");
     By SaveAndGoONButton=new By.ByXPath("//button[@class='button block green js-proceed-button']");
     By PaymentPageControle=new By.ByXPath("//div[normalize-space()='Masterpass ile Ödeme']");
@@ -150,11 +151,12 @@ public class CatalogCase extends BasePage {
         waitForSecond(1);
         click(EMail);
         waitForSecond(1);
-        send(EMail,EMailTxt);
+        send(EMail,GenerateRandomEmail(10));
         waitForSecond(1);
         click(GoOnButton);
         waitForSecond(1);
     }
+
     public void CompleteOrderFunction(){
         click(NewAdress);
         waitForSecond(1);

@@ -1,5 +1,6 @@
 package Pages;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -34,7 +35,13 @@ public class BasePage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));  //elementi gördüğün zaman
         find(locator).sendKeys(text);   //bir metin girişi yapmak için
     }
-
+    public static String GenerateRandomEmail(int length) {
+        String allowedChars = "abcdefghijklmnopqrstuvwxyz" + "1234567890" + "_-.";
+        String email = "";
+        String temp = RandomStringUtils.random(length, allowedChars);
+        email = temp.substring(0, temp.length() - 9) + "@testdata.com";
+        return email;
+    }
     public WebElement getElementLocated(By by){
         WebDriverWait wait = new WebDriverWait(driver,10);
         return wait.until(ExpectedConditions.elementToBeClickable(by));
